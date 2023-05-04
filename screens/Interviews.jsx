@@ -147,8 +147,7 @@ const ImageContainer = styled.div`
   position: relative;
   width: 49%;
   height: 47%;
-  box-shadow: 0px 36px 36.9px 1.1px rgba(0, 0, 0, 0.22),
-    inset -0.5px -0.9px 0 0 rgba(255, 255, 255, 0.75);
+
   background-image: url("/assets/600x600.png");
   background-size: cover;
   background-position: center;
