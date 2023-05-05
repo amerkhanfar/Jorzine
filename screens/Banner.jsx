@@ -10,10 +10,10 @@ const Banner = () => {
         <p style={{ color: "white" }}>JORZINE</p>
       </BannerText>
       <BannerText2>
-        <p style={{ color: "white" }}>AMER</p>
+        <p style={{ color: "white" }}>MID-EASTERN METAL WEBZINE</p>
       </BannerText2>
       <BannerText3>
-        <p style={{ color: "white" }}>SABBAGH</p>
+        <p style={{ color: "white" }}>SERVING ROCK & METAL SINCE 2006</p>
       </BannerText3>
     </Container>
   );
@@ -164,17 +164,19 @@ const BannerText = styled.div`
   animation-duration: 10s;
   animation-iteration-count: infinite;
   position: absolute;
+  text-align: center;
   /* left: 50%;
   top: 50%;
   transform: translate(-50%, -50%); */
 
   @media (max-width: 821px) {
+    top: 35rem;
     font-size: 10rem;
   }
 `;
 
 const BannerText2 = styled.div`
-  font-size: 18rem;
+  font-size: 7rem;
   text-shadow: 0px 0px 1px #110006;
   color: white;
   transform: scale(1);
@@ -182,17 +184,20 @@ const BannerText2 = styled.div`
   animation-duration: 10s;
   animation-iteration-count: infinite;
   position: absolute;
+  text-align: center;
   /* left: 50%;
   top: 50%;
   transform: translate(-50%, -50%); */
 
   @media (max-width: 821px) {
-    font-size: 10rem;
+    top: 35rem;
+    width: 70%;
+    font-size: 6rem;
   }
 `;
 
 const BannerText3 = styled.div`
-  font-size: 18rem;
+  font-size: 7rem;
   text-shadow: 0px 0px 1px #110006;
   color: white;
   transform: scale(1);
@@ -200,11 +205,14 @@ const BannerText3 = styled.div`
   animation-duration: 10s;
   animation-iteration-count: infinite;
   position: absolute;
+  text-align: center;
   /* left: 50%;
   top: 50%;
   transform: translate(-50%, -50%); */
 
   @media (max-width: 821px) {
-    font-size: 10rem;
+    top: 35rem;
+    width: 70%;
+    font-size: 6rem;
   }
 `;
