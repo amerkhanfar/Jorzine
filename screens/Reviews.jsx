@@ -104,6 +104,7 @@ const Container = styled.div`
   justify-content: space-between;
   min-height: 150vh;
   margin: 15rem 0rem;
+  background-color: white;
   @media (max-width: 821px) {
     min-height: 100vh;
   }
@@ -134,13 +135,15 @@ const PerspectiveContainer = styled.div`
   height: 100vh;
   width: 100%;
   overflow-x: visible;
+  display: flex;
+  justify-content: center;
 `;
 
 const FlexContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   height: 100%;
-  width: 100%;
+  width: 70%;
   justify-content: flex-end;
   gap: 2rem;
   transform: translate3d(-11%, -25%, 0) scale(1) rotateX(45deg) rotateY(-5deg)
@@ -181,6 +184,7 @@ const ImageContainer = styled.div`
   background-size: cover;
   background-position: center;
   transition: all 0.6s ease-in-out;
+  cursor: pointer;
 
   &:hover {
     -webkit-transform: scale(1.5);

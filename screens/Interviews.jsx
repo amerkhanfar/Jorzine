@@ -6,9 +6,9 @@ import Link from "next/link";
 const Interviews = () => {
   return (
     <Container>
-      <div style={{ position: "absolute", bottom: "-300px", right: "0" }}>
+      <PlayButton>
         <img src='/assets/play_bg_right.png' />
-      </div>
+      </PlayButton>
       <SubContainer>
         <TextContainer>
           <SectionHeading>Latest Interviews</SectionHeading>
@@ -72,6 +72,7 @@ const Container = styled.div`
   justify-content: center;
   overflow: visible;
   position: relative;
+  background-color: white;
 
   @media (max-width: 821px) {
     height: 90vh;
@@ -176,4 +177,13 @@ const FullButton = styled.button`
   height: 5rem;
   border-radius: 4px;
   align-self: center;
+`;
+
+const PlayButton = styled.div`
+  position: absolute;
+  bottom: -300px;
+  right: 0;
+  @media (max-width: 821px) {
+    bottom: -100px;
+  }
 `;
