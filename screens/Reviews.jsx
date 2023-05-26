@@ -143,7 +143,7 @@ const FlexContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   height: 100%;
-  width: 70%;
+  width: 65%;
   justify-content: flex-end;
   gap: 2rem;
   transform: translate3d(-11%, -25%, 0) scale(1) rotateX(45deg) rotateY(-5deg)
@@ -152,6 +152,7 @@ const FlexContainer = styled.div`
 
   @media (max-width: 821px) {
     transform: none;
+    width: 90%;
   }
 `;
 

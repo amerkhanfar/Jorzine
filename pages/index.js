@@ -7,6 +7,7 @@ import News from "../screens/News";
 import Reviews from "../screens/Reviews";
 import MeNews from "../screens/MeNews";
 import Test from "../screens/Test";
+import Cardnews from "../screens/Cardnews";
 import Interviews from "../screens/Interviews";
 import Featured from "../screens/Featured";
 import Footer from "../screens/Footer";
@@ -22,7 +23,8 @@ export default function Home() {
 
       <Banner />
       <Navbar />
-      <News />
+      <Cardnews />
+      {/* <News /> */}
       <Reviews />
       <Interviews />
       <MeNews />

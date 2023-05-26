@@ -20,7 +20,7 @@ const MeNews = () => {
               </NewsPar>
             </NewsBody>
             <div>
-              <FullButton>VIEW FULL NEWS</FullButton>
+              <FullButton>READ MORE</FullButton>
             </div>
           </OneContainer>
 
@@ -33,7 +33,7 @@ const MeNews = () => {
               </NewsPar>
             </NewsBody>
             <div>
-              <FullButton>VIEW FULL NEWS</FullButton>
+              <FullButton>READ MORE</FullButton>
             </div>
           </OneContainer>
 
@@ -48,7 +48,7 @@ const MeNews = () => {
               </NewsPar>
             </NewsBody>
             <div>
-              <FullButton>VIEW FULL NEWS</FullButton>
+              <FullButton>READ MORE</FullButton>
             </div>
           </OneContainer>
 
