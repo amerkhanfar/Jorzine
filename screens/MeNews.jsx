@@ -136,6 +136,9 @@ const Container = styled.div`
   background-position: center;
   padding-top: 25rem;
   padding-bottom: 8rem;
+  @media (max-width: 821px) {
+    padding-top: 45rem;
+  }
 `;
 
 const SectionHeading = styled.h2`

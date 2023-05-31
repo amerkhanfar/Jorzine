@@ -98,7 +98,7 @@ const Container = styled.div`
   background-position: center;
   overflow: visible;
   @media (max-width: 821px) {
-    padding-bottom: 50vh;
+    padding-bottom: 70vh;
   }
 `;
 

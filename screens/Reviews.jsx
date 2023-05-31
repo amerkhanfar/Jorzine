@@ -168,6 +168,9 @@ const Container = styled.div`
   background-color: white;
   @media (max-width: 821px) {
     min-height: 100vh;
+    @media (max-width: 821px) {
+      margin-bottom: 5rem;
+    }
   }
 `;
 
@@ -209,6 +212,9 @@ const ViewAll = styled.button`
   outline: none;
   border-radius: 0.5rem;
   cursor: pointer;
+  @media (max-width: 821px) {
+    margin-bottom: 2rem;
+  }
 `;
 const FlexContainer = styled.div`
   display: flex;
