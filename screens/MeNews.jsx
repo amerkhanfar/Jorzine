@@ -3,6 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 import { Fade } from "react-reveal";
 import { useRouter } from "next/router";
+import { Audio } from "react-loader-spinner";
 
 const MeNews = () => {
   const router = useRouter();
@@ -30,27 +31,28 @@ const MeNews = () => {
         <SectionHeading>Middle Eastren News</SectionHeading>
         <HeadingHr />
       </div>
-      <Fade bottom>
-        <NewsContainer>
-          {data.map((item) => {
-            return (
-              <OneContainer key={item.id}>
-                <NewsBody>
-                  <NewsHeading>{item.title}</NewsHeading>
-                  <NewsPar>{item.body}</NewsPar>
-                </NewsBody>
-                <div>
-                  <FullButton
-                    onClick={() => {
-                      router.push(`/news/${item.id}`);
-                    }}>
-                    READ MORE
-                  </FullButton>
-                </div>
-              </OneContainer>
-            );
-          })}
-          {/* <OneContainer>
+      {data.length ? (
+        <Fade bottom>
+          <NewsContainer>
+            {data.map((item) => {
+              return (
+                <OneContainer key={item.id}>
+                  <NewsBody>
+                    <NewsHeading>{item.title}</NewsHeading>
+                    <NewsPar>{item.body}</NewsPar>
+                  </NewsBody>
+                  <div>
+                    <FullButton
+                      onClick={() => {
+                        router.push(`/news/${item.id}`);
+                      }}>
+                      READ MORE
+                    </FullButton>
+                  </div>
+                </OneContainer>
+              );
+            })}
+            {/* <OneContainer>
             <NewsBody>
               <NewsHeading>INTERNATIONAL CONFERENCE IN 2018</NewsHeading>
               <NewsPar>
@@ -91,12 +93,23 @@ const MeNews = () => {
             </div>
           </OneContainer> */}
 
-          <FullButton>VIEW ALL NEWS</FullButton>
+            <FullButton>VIEW ALL NEWS</FullButton>
 
-          {/* <BottomBrush /> */}
-        </NewsContainer>
-        {/* <Bottom src='/assets/bottom.png' alt='' /> */}
-      </Fade>
+            {/* <BottomBrush /> */}
+          </NewsContainer>
+          {/* <Bottom src='/assets/bottom.png' alt='' /> */}
+        </Fade>
+      ) : (
+        <Audio
+          height='200'
+          width='200'
+          color='#be7214'
+          ariaLabel='audio-loading'
+          wrapperStyle={{}}
+          wrapperClass='wrapper-class'
+          visible={true}
+        />
+      )}
     </Container>
   );
 };

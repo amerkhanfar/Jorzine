@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Fade from "react-reveal/Fade";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { Audio } from "react-loader-spinner";
 
 const Cardnews = () => {
   const router = useRouter();
@@ -30,35 +31,46 @@ const Cardnews = () => {
         <SectionHeading>International News</SectionHeading>
         <HeadingHr />
       </div>
-
-      <NewsContainer>
-        <Fade bottom>
-          <CardContainer>
-            {data.map((item) => {
-              return (
-                <Card key={item.id}>
-                  <NewsBody>
-                    <NewsHeading>{item.title}</NewsHeading>
-                    <NewsPar>{item.body}</NewsPar>
-                    <CardButton
-                      onClick={() => {
-                        router.push(`/news/${item.id}`);
-                      }}>
-                      READ MORE
-                    </CardButton>
-                  </NewsBody>
-                </Card>
-              );
-            })}
-          </CardContainer>
-          <FullButton
-            onClick={() => {
-              router.push(`/news`);
-            }}>
-            VIEW ALL NEWS
-          </FullButton>
-        </Fade>
-      </NewsContainer>
+      {data.length ? (
+        <NewsContainer>
+          <Fade bottom>
+            <CardContainer>
+              {data.map((item) => {
+                return (
+                  <Card key={item.id}>
+                    <NewsBody>
+                      <NewsHeading>{item.title}</NewsHeading>
+                      <NewsPar>{item.body}</NewsPar>
+                      <CardButton
+                        onClick={() => {
+                          router.push(`/news/${item.id}`);
+                        }}>
+                        READ MORE
+                      </CardButton>
+                    </NewsBody>
+                  </Card>
+                );
+              })}
+            </CardContainer>
+            <FullButton
+              onClick={() => {
+                router.push(`/news`);
+              }}>
+              VIEW ALL NEWS
+            </FullButton>
+          </Fade>
+        </NewsContainer>
+      ) : (
+        <Audio
+          height='200'
+          width='200'
+          color='#be7214'
+          ariaLabel='audio-loading'
+          wrapperStyle={{}}
+          wrapperClass='wrapper-class'
+          visible={true}
+        />
+      )}
 
       {/* <BottomAbs>
         <Bottom>

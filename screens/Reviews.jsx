@@ -3,6 +3,7 @@ import axios from "axios";
 import Link from "next/link";
 import styled from "styled-components";
 import { useRouter } from "next/router";
+import { Audio } from "react-loader-spinner";
 
 const Reviews = () => {
   const [data, setData] = useState([]);
@@ -48,26 +49,33 @@ const Reviews = () => {
           There are many variations of passages of Lorem Ipsum available but the
           majority have suffered alteration in some injected humour.
         </SectionBody>
+        <ViewAll
+          onClick={() => {
+            router.push(`/Reviews`);
+          }}>
+          VIEW ALL REVIEWS
+        </ViewAll>
       </div>
 
       <PerspectiveContainer>
-        <FlexContainer>
-          {data.map((item) => {
-            return (
-              <ImageContainer
-                key={item.id}
-                style={{ backgroundImage: `url(${item.img})` }}>
-                <Overlay
-                  onClick={() => {
-                    router.push(`/Reviews/${item.id}`);
-                  }}>
-                  <OverlayHeading>{item.title}</OverlayHeading>
-                  <OverlayFooter>By: {item.reviewer}</OverlayFooter>
-                </Overlay>
-              </ImageContainer>
-            );
-          })}
-          {/* <ImageContainer>
+        {data.length ? (
+          <FlexContainer>
+            {data.map((item) => {
+              return (
+                <ImageContainer
+                  key={item.id}
+                  style={{ backgroundImage: `url(${item.img})` }}>
+                  <Overlay
+                    onClick={() => {
+                      router.push(`/Reviews/${item.id}`);
+                    }}>
+                    <OverlayHeading>{item.title}</OverlayHeading>
+                    <OverlayFooter>By: {item.reviewer}</OverlayFooter>
+                  </Overlay>
+                </ImageContainer>
+              );
+            })}
+            {/* <ImageContainer>
             <Overlay>
               <OverlayHeading>Review Name</OverlayHeading>
               <OverlayFooter>By: Amer Khanfar</OverlayFooter>
@@ -129,7 +137,18 @@ const Reviews = () => {
               <OverlayFooter>By: Amer Khanfar</OverlayFooter>
             </Overlay>
           </ImageContainer> */}
-        </FlexContainer>
+          </FlexContainer>
+        ) : (
+          <Audio
+            height='200'
+            width='200'
+            color='#be7214'
+            ariaLabel='audio-loading'
+            wrapperStyle={{}}
+            wrapperClass='wrapper-class'
+            visible={true}
+          />
+        )}
       </PerspectiveContainer>
     </Container>
   );
@@ -181,6 +200,16 @@ const PerspectiveContainer = styled.div`
   justify-content: center;
 `;
 
+const ViewAll = styled.button`
+  background-color: #be7214;
+  border: none;
+  color: white;
+  font-size: 1.4rem;
+  padding: 1.4rem 1.6rem;
+  outline: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+`;
 const FlexContainer = styled.div`
   display: flex;
   flex-wrap: wrap;

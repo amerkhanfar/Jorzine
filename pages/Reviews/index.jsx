@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import Navbar from "../../screens/AltNav";
 import Footer from "../../screens/Footer";
+import { Audio } from "react-loader-spinner";
 
 const Reviews = () => {
   const [data, setData] = useState([]);
@@ -40,23 +41,24 @@ const Reviews = () => {
         <HeadingHr />
       </div>
 
-      <FlexContainer>
-        {data.map((item) => {
-          return (
-            <ImageContainer
-              key={item.id}
-              style={{ backgroundImage: `url(${item.img})` }}>
-              <Overlay
-                onClick={() => {
-                  router.push(`/Reviews/${item.id}`);
-                }}>
-                <OverlayHeading>{item.title}</OverlayHeading>
-                <OverlayFooter>By: {item.reviewer}</OverlayFooter>
-              </Overlay>
-            </ImageContainer>
-          );
-        })}
-        {/* <ImageContainer>
+      {data.length ? (
+        <FlexContainer>
+          {data.map((item) => {
+            return (
+              <ImageContainer
+                key={item.id}
+                style={{ backgroundImage: `url(${item.img})` }}>
+                <Overlay
+                  onClick={() => {
+                    router.push(`/Reviews/${item.id}`);
+                  }}>
+                  <OverlayHeading>{item.title}</OverlayHeading>
+                  <OverlayFooter>By: {item.reviewer}</OverlayFooter>
+                </Overlay>
+              </ImageContainer>
+            );
+          })}
+          {/* <ImageContainer>
             <Overlay>
               <OverlayHeading>Review Name</OverlayHeading>
               <OverlayFooter>By: Amer Khanfar</OverlayFooter>
@@ -118,7 +120,19 @@ const Reviews = () => {
               <OverlayFooter>By: Amer Khanfar</OverlayFooter>
             </Overlay>
           </ImageContainer> */}
-      </FlexContainer>
+        </FlexContainer>
+      ) : (
+        <Audio
+          height='200'
+          width='200'
+          color='#be7214'
+          ariaLabel='audio-loading'
+          wrapperStyle={{}}
+          wrapperClass='wrapper-class'
+          visible={true}
+        />
+      )}
+
       <Footer />
     </Container>
   );

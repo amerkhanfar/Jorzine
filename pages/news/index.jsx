@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../../screens/AltNav";
 import styled from "styled-components";
 import axios from "axios";
-
+import { Audio } from "react-loader-spinner";
 import { useRouter } from "next/router";
 
 const Index = () => {
@@ -21,7 +21,7 @@ const Index = () => {
       ); // Replace with your API endpoint
       const jsonData = response.data.news;
       console.log(jsonData);
-      setData(jsonData.slice(0, 50)); // Get the first three items from the response
+      setData(jsonData.slice(0, 120)); // Get the first three items from the response
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -65,29 +65,41 @@ const Index = () => {
         </NewsBody>
       </FirstNews>
       <h1 style={{ fontSize: "3.5rem" }}>Latest News</h1>
-      <CardsContainer>
-        {data.map((item) => {
-          return (
-            <Card key={item.id}>
-              {/* <CardImage /> */}
-              <LatestNewsHeading>{item.title}</LatestNewsHeading>
-              <LatestNewsPar>{item.body}</LatestNewsPar>
-              <InfoContainer>
-                <Info>
-                  <Author>By: {item.posted_by_user}</Author>
-                  <Date>{item.news_date}</Date>
-                </Info>
-              </InfoContainer>
-              <ReadMore
-                onClick={() => {
-                  router.push(`/news/${item.id}`);
-                }}>
-                Read More →
-              </ReadMore>
-            </Card>
-          );
-        })}
-      </CardsContainer>
+      {data.length ? (
+        <CardsContainer>
+          {data.map((item) => {
+            return (
+              <Card key={item.id}>
+                {/* <CardImage /> */}
+                <LatestNewsHeading>{item.title}</LatestNewsHeading>
+                <LatestNewsPar>{item.body}</LatestNewsPar>
+                <InfoContainer>
+                  <Info>
+                    <Author>By: {item.posted_by_user}</Author>
+                    <Date>{item.news_date}</Date>
+                  </Info>
+                </InfoContainer>
+                <ReadMore
+                  onClick={() => {
+                    router.push(`/news/${item.id}`);
+                  }}>
+                  Read More →
+                </ReadMore>
+              </Card>
+            );
+          })}
+        </CardsContainer>
+      ) : (
+        <Audio
+          height='200'
+          width='200'
+          color='#be7214'
+          ariaLabel='audio-loading'
+          wrapperStyle={{}}
+          wrapperClass='wrapper-class'
+          visible={true}
+        />
+      )}
     </Container>
   );
 };
