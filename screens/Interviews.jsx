@@ -41,7 +41,7 @@ const Interviews = () => {
           </p>
           <FullButton
             onClick={() => {
-              router.push(`/news`);
+              router.push(`/interviews`);
             }}>
             View All Interviews
           </FullButton>

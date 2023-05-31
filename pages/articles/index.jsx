@@ -4,7 +4,7 @@ import Footer from "../../screens/Footer";
 import styled from "styled-components";
 import axios from "axios";
 import { useRouter } from "next/router";
-
+import { Audio } from "react-loader-spinner";
 const Index = () => {
   const router = useRouter();
 
@@ -29,29 +29,40 @@ const Index = () => {
   return (
     <Container>
       <Navbar />
-
-      <ArticlesContainer>
-        {data.map((item) => {
-          return (
-            <ArticleContainer key={item.id}>
-              <ImageContainer
-                style={{ backgroundImage: `url(${item.thumb})` }}
-              />
-              <div style={{ width: "50%" }}>
-                <h1>{item.title}</h1>
-                <h2>Author: &nbsp;{item.author}</h2>
-                <h2>Date: &nbsp;{item.date}</h2>
-                <ViewAll
-                  onClick={() => {
-                    router.push(`/articles/${item.id}`);
-                  }}>
-                  VIEW ARTICLE
-                </ViewAll>
-              </div>
-            </ArticleContainer>
-          );
-        })}
-      </ArticlesContainer>
+      {data.length ? (
+        <ArticlesContainer>
+          {data.map((item) => {
+            return (
+              <ArticleContainer key={item.id}>
+                <ImageContainer
+                  style={{ backgroundImage: `url(${item.thumb})` }}
+                />
+                <div style={{ width: "50%" }}>
+                  <h1>{item.title}</h1>
+                  <h2>Author: &nbsp;{item.author}</h2>
+                  <h2>Date: &nbsp;{item.date}</h2>
+                  <ViewAll
+                    onClick={() => {
+                      router.push(`/articles/${item.id}`);
+                    }}>
+                    VIEW ARTICLE
+                  </ViewAll>
+                </div>
+              </ArticleContainer>
+            );
+          })}
+        </ArticlesContainer>
+      ) : (
+        <Audio
+          height='200'
+          width='200'
+          color='#be7214'
+          ariaLabel='audio-loading'
+          wrapperStyle={{}}
+          wrapperClass='wrapper-class'
+          visible={true}
+        />
+      )}
     </Container>
   );
 };
