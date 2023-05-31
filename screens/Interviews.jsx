@@ -39,7 +39,12 @@ const Interviews = () => {
             aliquam excepturi debitis optio non iste repudiandae inventore,
             deleniti, enim eveniet voluptates ipsum rerum tenetur quo?
           </p>
-          <FullButton>View All Interviews</FullButton>
+          <FullButton
+            onClick={() => {
+              router.push(`/news`);
+            }}>
+            View All Interviews
+          </FullButton>
         </TextContainer>
         <Grid>
           {data.map((item) => {

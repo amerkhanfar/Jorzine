@@ -93,7 +93,12 @@ const MeNews = () => {
             </div>
           </OneContainer> */}
 
-            <FullButton>VIEW ALL NEWS</FullButton>
+            <FullButton
+              onClick={() => {
+                router.push(`/news`);
+              }}>
+              VIEW ALL NEWS
+            </FullButton>
 
             {/* <BottomBrush /> */}
           </NewsContainer>
