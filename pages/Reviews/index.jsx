@@ -3,6 +3,8 @@ import axios from "axios";
 import Link from "next/link";
 import styled from "styled-components";
 import { useRouter } from "next/router";
+import Navbar from "../../screens/AltNav";
+import Footer from "../../screens/Footer";
 
 const Reviews = () => {
   const [data, setData] = useState([]);
@@ -19,22 +21,14 @@ const Reviews = () => {
       ); // Replace with your API endpoint
       const jsonData = response.data.reviews;
       console.log(jsonData);
-      setData(jsonData.slice(0, 9)); // Get the first three items from the response
+      setData(jsonData.slice(0, 200)); // Get the first three items from the response
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
   return (
     <Container>
-      <div
-        style={{
-          position: "absolute",
-          bottom: "0",
-          left: "0",
-          width: "200px",
-        }}>
-        <img src='/assets/play_bg.png' width={400} />
-      </div>
+      <Navbar />
       <div
         style={{
           display: "flex",
@@ -44,30 +38,25 @@ const Reviews = () => {
         }}>
         <SectionHeading>Latest Reviews</SectionHeading>
         <HeadingHr />
-        <SectionBody>
-          There are many variations of passages of Lorem Ipsum available but the
-          majority have suffered alteration in some injected humour.
-        </SectionBody>
       </div>
 
-      <PerspectiveContainer>
-        <FlexContainer>
-          {data.map((item) => {
-            return (
-              <ImageContainer
-                key={item.id}
-                style={{ backgroundImage: `url(${item.img})` }}>
-                <Overlay
-                  onClick={() => {
-                    router.push(`/Reviews/${item.id}`);
-                  }}>
-                  <OverlayHeading>{item.title}</OverlayHeading>
-                  <OverlayFooter>By: {item.reviewer}</OverlayFooter>
-                </Overlay>
-              </ImageContainer>
-            );
-          })}
-          {/* <ImageContainer>
+      <FlexContainer>
+        {data.map((item) => {
+          return (
+            <ImageContainer
+              key={item.id}
+              style={{ backgroundImage: `url(${item.img})` }}>
+              <Overlay
+                onClick={() => {
+                  router.push(`/Reviews/${item.id}`);
+                }}>
+                <OverlayHeading>{item.title}</OverlayHeading>
+                <OverlayFooter>By: {item.reviewer}</OverlayFooter>
+              </Overlay>
+            </ImageContainer>
+          );
+        })}
+        {/* <ImageContainer>
             <Overlay>
               <OverlayHeading>Review Name</OverlayHeading>
               <OverlayFooter>By: Amer Khanfar</OverlayFooter>
@@ -129,8 +118,8 @@ const Reviews = () => {
               <OverlayFooter>By: Amer Khanfar</OverlayFooter>
             </Overlay>
           </ImageContainer> */}
-        </FlexContainer>
-      </PerspectiveContainer>
+      </FlexContainer>
+      <Footer />
     </Container>
   );
 };
@@ -138,18 +127,12 @@ const Reviews = () => {
 export default Reviews;
 
 const Container = styled.div`
-  position: relative;
-  width: 100vw;
   display: flex;
   flex-direction: column;
+  width: 100vw;
   align-items: center;
-  justify-content: space-between;
-  min-height: 150vh;
-  margin: 15rem 0rem;
-  background-color: white;
-  @media (max-width: 821px) {
-    min-height: 100vh;
-  }
+  overflow-x: hidden;
+  gap: 50px;
 `;
 
 const SectionHeading = styled.h2`
@@ -185,15 +168,24 @@ const FlexContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   height: 100%;
-  width: 65%;
-  justify-content: flex-end;
+  width: 80%;
+  justify-content: center;
   gap: 2rem;
-  transform: translate3d(-11%, -25%, 0) scale(1) rotateX(45deg) rotateY(-5deg)
-    rotateZ(25deg);
-  overflow-x: visible;
 
   @media (max-width: 821px) {
     transform: none;
+    width: 90%;
+  }
+`;
+
+const Infos = styled.div`
+  display: flex;
+
+  width: 50%;
+  justify-content: space-between;
+  align-self: center;
+  @media (max-width: 821px) {
+    flex-direction: column;
     width: 90%;
   }
 `;
@@ -221,7 +213,8 @@ const OverlayFooter = styled(OverlayHeading)``;
 
 const ImageContainer = styled.div`
   position: relative;
-  width: 27%;
+  width: 20%;
+  height: 200px;
   box-shadow: 0px 36px 36.9px 1.1px rgba(0, 0, 0, 0.22),
     inset -0.5px -0.9px 0 0 rgba(255, 255, 255, 0.75);
   background-image: url("/assets/600x600.png");
