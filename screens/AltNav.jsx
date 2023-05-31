@@ -21,8 +21,8 @@ const Navbar = () => {
           <Link href={"/news"}> News</Link>
           <Link href={"/Reviews"}>Reviews</Link>
           <Link href={"/interviews"}>Interviews</Link>
-          <Link href={"/"}>Bands</Link>
-          <Link href={"/"}>Articles</Link>
+
+          <Link href={"/articles"}>Articles</Link>
         </LinksContainer>
 
         <MenuIcon>
