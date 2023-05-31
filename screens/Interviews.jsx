@@ -20,7 +20,7 @@ const Interviews = () => {
       ); // Replace with your API endpoint
       const jsonData = response.data.interviews;
       console.log(jsonData);
-      setData(jsonData.slice(25, 29)); // Get the first three items from the response
+      setData(jsonData.slice(0, 9)); // Get the first three items from the response
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -146,8 +146,8 @@ const Overlay = styled.div`
 
 const ImageContainer = styled.div`
   position: relative;
-  width: 49%;
-  height: 47%;
+  width: 25%;
+  height: 33%;
 
   background-image: url("/assets/600x600.png");
   background-size: cover;
