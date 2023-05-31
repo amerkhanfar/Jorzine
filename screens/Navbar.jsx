@@ -2,19 +2,27 @@ import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import { AiOutlineMenu } from "react-icons/ai";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
+  const router = useRouter();
   return (
     <Container>
       <Nav>
-        <Logo src='/assets/logo.png' alt='Jorzine Logo' />
+        <Logo
+          src='/assets/logo.png'
+          alt='Jorzine Logo'
+          onClick={() => {
+            router.push("/");
+          }}
+        />
         <LinksContainer>
           <Link href={"/"}>Home</Link>
-          <Link href={"/"}>About Us</Link>
-          <Link href={"/"}>News</Link>
-          <Link href={"/"}>Interviews</Link>
-          <Link href={"/"}>Gallery</Link>
-          <Link href={"/"}>Events</Link>
+          <Link href={"/news"}>News</Link>
+          <Link href={"/Reviews"}>Reviews</Link>
+          <Link href={"/interviews"}>Interviews</Link>
+          <Link href={"/"}>Bands</Link>
+          <Link href={"/"}>Articles</Link>
         </LinksContainer>
 
         <MenuIcon>
