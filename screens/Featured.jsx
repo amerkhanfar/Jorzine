@@ -130,7 +130,7 @@ const SubContainer = styled.div`
 
 const SectionHeading = styled.h2`
   font-size: 4rem;
-  color: #f60038;
+  color: #be7214;
   font-weight: 700;
   text-transform: uppercase;
   margin: 0;
@@ -140,7 +140,7 @@ const SectionHeading = styled.h2`
 const HeadingHr = styled.div`
   width: 7rem;
   height: 4px;
-  background-color: #f60038;
+  background-color: #be7214;
   align-self: center;
 `;
 
@@ -204,7 +204,7 @@ const Song = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #f60038;
+  color: #be7214;
   padding-bottom: 5px;
   border-bottom: 1px solid black;
 `;

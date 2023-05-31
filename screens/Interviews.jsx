@@ -1,13 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
 import { AiOutlineLink } from "react-icons/ai";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Interviews = () => {
+  const router = useRouter();
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "https://jorzine-backend.oplus.dev/api/interviews",
+      ); // Replace with your API endpoint
+      const jsonData = response.data.interviews;
+      console.log(jsonData);
+      setData(jsonData.slice(25, 29)); // Get the first three items from the response
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
   return (
     <Container>
       <PlayButton>
-        <img src='/assets/play_bg_right.png' />
+        <img src='/assets/play_bg_right.png' width={400} />
       </PlayButton>
       <SubContainer>
         <TextContainer>
@@ -21,42 +42,21 @@ const Interviews = () => {
           <FullButton>View All Interviews</FullButton>
         </TextContainer>
         <Grid>
-          <ImageContainer>
-            <Overlay>
-              <div style={{ color: "white", fontSize: "3rem" }}>
-                <Link href={"/"}>
-                  <AiOutlineLink />
-                </Link>
-              </div>
-            </Overlay>
-          </ImageContainer>
-          <ImageContainer>
-            <Overlay>
-              <div style={{ color: "white", fontSize: "3rem" }}>
-                <Link href={"/"}>
-                  <AiOutlineLink />
-                </Link>
-              </div>
-            </Overlay>
-          </ImageContainer>
-          <ImageContainer>
-            <Overlay>
-              <div style={{ color: "white", fontSize: "3rem" }}>
-                <Link href={"/"}>
-                  <AiOutlineLink />
-                </Link>
-              </div>
-            </Overlay>
-          </ImageContainer>
-          <ImageContainer>
-            <Overlay>
-              <div style={{ color: "white", fontSize: "3rem" }}>
-                <Link href={"/"}>
-                  <AiOutlineLink />
-                </Link>
-              </div>
-            </Overlay>
-          </ImageContainer>
+          {data.map((item) => {
+            return (
+              <ImageContainer
+                key={item.id}
+                style={{ backgroundImage: `url(${item.thumb})` }}>
+                <Overlay>
+                  <div style={{ color: "white", fontSize: "3rem" }}>
+                    <Link href={`/interviews/${item.id}`}>
+                      <AiOutlineLink />
+                    </Link>
+                  </div>
+                </Overlay>
+              </ImageContainer>
+            );
+          })}
         </Grid>
       </SubContainer>
     </Container>
@@ -105,7 +105,7 @@ const TextContainer = styled.div`
 `;
 const SectionHeading = styled.h2`
   font-size: 4rem;
-  color: #f60038;
+  color: #be7214;
   font-weight: 700;
   text-transform: uppercase;
 `;
@@ -113,7 +113,7 @@ const SectionHeading = styled.h2`
 const HeadingHr = styled.div`
   width: 7rem;
   height: 4px;
-  background-color: #f60038;
+  background-color: #be7214;
   align-self: center;
 `;
 
@@ -166,7 +166,7 @@ const ImageContainer = styled.div`
 
 const FullButton = styled.button`
   cursor: pointer;
-  background: #f60038;
+  background: #be7214;
   color: white;
   border: transparent;
   padding: 1rem 2.4rem;
