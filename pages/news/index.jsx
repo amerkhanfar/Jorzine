@@ -29,7 +29,7 @@ const Index = () => {
   return (
     <Container>
       <Navbar />
-      <FirstNews>
+      {/* <FirstNews>
         <ImageContainer />
         <NewsBody>
           <NewsHeading>
@@ -63,7 +63,7 @@ const Index = () => {
             <Date>2012-08-04</Date>
           </Info>
         </NewsBody>
-      </FirstNews>
+      </FirstNews> */}
       <h1 style={{ fontSize: "3.5rem" }}>Latest News</h1>
       {data.length ? (
         <CardsContainer>
