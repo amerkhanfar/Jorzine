@@ -11,6 +11,7 @@ import Cardnews from "../screens/Cardnews";
 import Interviews from "../screens/Interviews";
 import Featured from "../screens/Featured";
 import Footer from "../screens/Footer";
+import { useRouter } from "next/router";
 
 export default function Home() {
   return (

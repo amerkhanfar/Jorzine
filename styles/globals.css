@@ -17,7 +17,6 @@ a {
 
 * {
   box-sizing: border-box;
-  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {

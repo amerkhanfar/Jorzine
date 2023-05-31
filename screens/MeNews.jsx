@@ -1,8 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import styled from "styled-components";
 import { Fade } from "react-reveal";
+import { useRouter } from "next/router";
 
 const MeNews = () => {
+  const router = useRouter();
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "https://jorzine-backend.oplus.dev/api/news_eastern",
+      ); // Replace with your API endpoint
+      const jsonData = response.data.news;
+      console.log(jsonData);
+      setData(jsonData.slice(0, 3)); // Get the first three items from the response
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
   return (
     <Container>
       <div style={{ display: "flex", flexDirection: "column" }}>
@@ -11,7 +32,25 @@ const MeNews = () => {
       </div>
       <Fade bottom>
         <NewsContainer>
-          <OneContainer>
+          {data.map((item) => {
+            return (
+              <OneContainer key={item.id}>
+                <NewsBody>
+                  <NewsHeading>{item.title}</NewsHeading>
+                  <NewsPar>{item.body}</NewsPar>
+                </NewsBody>
+                <div>
+                  <FullButton
+                    onClick={() => {
+                      router.push(`/news/${item.id}`);
+                    }}>
+                    READ MORE
+                  </FullButton>
+                </div>
+              </OneContainer>
+            );
+          })}
+          {/* <OneContainer>
             <NewsBody>
               <NewsHeading>INTERNATIONAL CONFERENCE IN 2018</NewsHeading>
               <NewsPar>
@@ -50,7 +89,7 @@ const MeNews = () => {
             <div>
               <FullButton>READ MORE</FullButton>
             </div>
-          </OneContainer>
+          </OneContainer> */}
 
           <FullButton>VIEW ALL NEWS</FullButton>
 
@@ -83,7 +122,7 @@ const Container = styled.div`
 
 const SectionHeading = styled.h2`
   font-size: 4rem;
-  color: #f60038;
+  color: #be7214;
   font-weight: 700;
   text-transform: uppercase;
 `;
@@ -91,7 +130,7 @@ const SectionHeading = styled.h2`
 const HeadingHr = styled.div`
   width: 7rem;
   height: 4px;
-  background-color: #f60038;
+  background-color: #be7214;
   align-self: center;
 `;
 
@@ -136,6 +175,11 @@ const NewsHeading = styled.h2`
 `;
 
 const NewsPar = styled.div`
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  max-height: 150px;
+
   width: 70%;
   font-size: 1.6rem;
   @media (max-width: 821px) {
@@ -146,7 +190,7 @@ const NewsPar = styled.div`
 
 const FullButton = styled.button`
   cursor: pointer;
-  background: #f60038;
+  background: #be7214;
   color: white;
   border: transparent;
   padding: 1rem 2.4rem;

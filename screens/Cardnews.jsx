@@ -1,8 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Fade from "react-reveal/Fade";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 const Cardnews = () => {
+  const router = useRouter();
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "https://jorzine-backend.oplus.dev/api/news_international",
+      ); // Replace with your API endpoint
+      const jsonData = response.data.news;
+      console.log(jsonData);
+      setData(jsonData.slice(0, 6)); // Get the first three items from the response
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
   return (
     <Container>
       <div style={{ display: "flex", flexDirection: "column" }}>
@@ -13,86 +34,29 @@ const Cardnews = () => {
       <NewsContainer>
         <Fade bottom>
           <CardContainer>
-            <Card>
-              <NewsBody>
-                <NewsHeading>INTERNATIONAL CONFERENCE IN 2018</NewsHeading>
-                <NewsPar>
-                  There are many variations of passages of Lorem Ipsum available
-                  There are many variations of passages of Lorem Ipsum
-                  available. There are many variations of passages of Lorem
-                  Ipsum available There are many variations of passages of Lorem
-                  Ipsum available..............
-                </NewsPar>
-                <CardButton>READ MORE</CardButton>
-              </NewsBody>
-            </Card>
-            <Card>
-              <NewsBody>
-                <NewsHeading>INTERNATIONAL CONFERENCE IN 2018</NewsHeading>
-                <NewsPar>
-                  There are many variations of passages of Lorem Ipsum available
-                  There are many variations of passages of Lorem Ipsum
-                  available. There are many variations of passages of Lorem
-                  Ipsum available There are many variations of passages of Lorem
-                  Ipsum available..............
-                </NewsPar>
-                <CardButton>READ MORE</CardButton>
-              </NewsBody>
-            </Card>
-            <Card>
-              <NewsBody>
-                <NewsHeading>INTERNATIONAL CONFERENCE IN 2018</NewsHeading>
-                <NewsPar>
-                  There are many variations of passages of Lorem Ipsum available
-                  There are many variations of passages of Lorem Ipsum
-                  available. There are many variations of passages of Lorem
-                  Ipsum available There are many variations of passages of Lorem
-                  Ipsum available..............
-                </NewsPar>
-                <CardButton>READ MORE</CardButton>
-              </NewsBody>
-            </Card>
-            <Card>
-              <NewsBody>
-                <NewsHeading>INTERNATIONAL CONFERENCE IN 2018</NewsHeading>
-                <NewsPar>
-                  There are many variations of passages of Lorem Ipsum available
-                  There are many variations of passages of Lorem Ipsum
-                  available. There are many variations of passages of Lorem
-                  Ipsum available There are many variations of passages of Lorem
-                  Ipsum available..............
-                </NewsPar>
-                <CardButton>READ MORE</CardButton>
-              </NewsBody>
-            </Card>
-            <Card>
-              <NewsBody>
-                <NewsHeading>INTERNATIONAL CONFERENCE IN 2018</NewsHeading>
-                <NewsPar>
-                  There are many variations of passages of Lorem Ipsum available
-                  There are many variations of passages of Lorem Ipsum
-                  available. There are many variations of passages of Lorem
-                  Ipsum available There are many variations of passages of Lorem
-                  Ipsum available..............
-                </NewsPar>
-                <CardButton>READ MORE</CardButton>
-              </NewsBody>
-            </Card>
-            <Card>
-              <NewsBody>
-                <NewsHeading>INTERNATIONAL CONFERENCE IN 2018</NewsHeading>
-                <NewsPar>
-                  There are many variations of passages of Lorem Ipsum available
-                  There are many variations of passages of Lorem Ipsum
-                  available. There are many variations of passages of Lorem
-                  Ipsum available There are many variations of passages of Lorem
-                  Ipsum available..............
-                </NewsPar>
-                <CardButton>READ MORE</CardButton>
-              </NewsBody>
-            </Card>
+            {data.map((item) => {
+              return (
+                <Card key={item.id}>
+                  <NewsBody>
+                    <NewsHeading>{item.title}</NewsHeading>
+                    <NewsPar>{item.body}</NewsPar>
+                    <CardButton
+                      onClick={() => {
+                        router.push(`/news/${item.id}`);
+                      }}>
+                      READ MORE
+                    </CardButton>
+                  </NewsBody>
+                </Card>
+              );
+            })}
           </CardContainer>
-          <FullButton>VIEW ALL NEWS</FullButton>
+          <FullButton
+            onClick={() => {
+              router.push(`/news`);
+            }}>
+            VIEW ALL NEWS
+          </FullButton>
         </Fade>
       </NewsContainer>
 
@@ -118,7 +82,7 @@ const Container = styled.div`
   gap: 5rem;
   background-image: url("/assets/bottom.png");
   background-size: cover;
-  min-height: 170vh;
+  min-height: 190vh;
   background-position: center;
   overflow: visible;
   @media (max-width: 821px) {
@@ -143,6 +107,8 @@ const Card = styled.div`
   padding: 1rem;
   width: 25%;
   min-height: 40vh;
+  max-height: 50vh;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -155,7 +121,7 @@ const Card = styled.div`
 
 const SectionHeading = styled.h2`
   font-size: 4rem;
-  color: #f60038;
+  color: #be7214;
   font-weight: 700;
   text-transform: uppercase;
 `;
@@ -163,7 +129,7 @@ const SectionHeading = styled.h2`
 const HeadingHr = styled.div`
   width: 7rem;
   height: 4px;
-  background-color: #f60038;
+  background-color: #be7214;
   align-self: center;
 `;
 
@@ -201,7 +167,9 @@ const NewsBody = styled.div`
   flex-direction: column;
   justify-content: space-around;
   text-align: center;
-  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
   @media (max-width: 821px) {
     width: 100%;
     align-items: center;
@@ -211,6 +179,7 @@ const NewsBody = styled.div`
 
 const NewsHeading = styled.h2`
   font-size: 1.6rem;
+
   @media (max-width: 821px) {
     font-size: 2.5rem;
   }
@@ -218,6 +187,9 @@ const NewsHeading = styled.h2`
 
 const NewsPar = styled.div`
   font-size: 1.3rem;
+  overflow: hidden;
+  text-overflow: clip;
+  overflow: hidden;
   @media (max-width: 821px) {
     font-size: 1.8rem;
   }
@@ -225,7 +197,7 @@ const NewsPar = styled.div`
 
 const FullButton = styled.button`
   cursor: pointer;
-  background: #f60038;
+  background: #be7214;
   color: white;
   border: transparent;
   padding: 1rem 2.4rem;
@@ -240,7 +212,7 @@ const FullButton = styled.button`
 
 const CardButton = styled.button`
   cursor: pointer;
-  background: #f60038;
+  background: #be7214;
   color: white;
   border: transparent;
   padding: 0.7rem 1.7rem;
