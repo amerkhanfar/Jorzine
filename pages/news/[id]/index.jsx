@@ -98,8 +98,14 @@ export async function getStaticProps() {
 }
 
 export async function getStaticPaths() {
+  const ids = [17, 20, 21]; // Example array of IDs
+
+  // Map the IDs to the `params` object required by Next.js
+  const paths = ids.map((id) => ({
+    params: { id: id.toString() },
+  }));
   return {
-    paths: [{ params: { id: "1" } }],
+    paths,
     fallback: false,
   };
 }
