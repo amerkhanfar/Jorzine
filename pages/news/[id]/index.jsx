@@ -91,6 +91,19 @@ const Index = () => {
 
 export default Index;
 
+export async function getStaticProps() {
+  return {
+    props: { title: "title", description: "description" },
+  };
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: [{ params: { id: "1" } }],
+    fallback: false,
+  };
+}
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
