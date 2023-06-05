@@ -160,6 +160,7 @@ const Container = styled.div`
   position: relative;
   width: 100vw;
   display: flex;
+  gap: 200px;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
