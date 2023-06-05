@@ -177,11 +177,14 @@ export const LatestNewsHeading = styled.h2`
 
 export const LatestNewsPar = styled.div`
   overflow: hidden;
-  text-overflow: ellipsis;
-  text-overflow: clip;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4; /* start showing ellipsis when 3rd line is reached */
+  white-space: pre-wrap;
   max-height: 250px;
   width: 100%;
   font-size: 1.5rem;
+  -webkit-line-clamp: 4;
   @media (max-width: 821px) {
     width: 90%;
     margin: 5rem 0rem;
@@ -233,6 +236,7 @@ export const Card = styled.div`
   border-radius: 1rem;
   border: 1px solid gray;
   text-align: center;
+
   gap: 1rem;
   padding: 0px 1rem;
   flex-direction: column;

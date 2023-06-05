@@ -118,7 +118,7 @@ const CardContainer = styled.div`
 
 const Card = styled.div`
   padding: 1rem;
-  width: 25%;
+  width: 27%;
   min-height: 40vh;
   max-height: 50vh;
   text-overflow: ellipsis;
@@ -181,6 +181,7 @@ const NewsBody = styled.div`
   flex-direction: column;
   justify-content: space-around;
   text-align: center;
+
   max-height: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -206,6 +207,11 @@ const NewsPar = styled.div`
   overflow: hidden;
   text-overflow: clip;
   overflow: hidden;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 9; /* start showing ellipsis when 3rd line is reached */
+
   color: white;
   @media (max-width: 821px) {
     font-size: 1.8rem;
