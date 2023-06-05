@@ -21,7 +21,7 @@ const Index = () => {
       ); // Replace with your API endpoint
       const jsonData = response.data.news;
       console.log(jsonData);
-      setData(jsonData.slice(0, 120)); // Get the first three items from the response
+      setData(jsonData); // Get the first three items from the response
     } catch (error) {
       console.error("Error fetching data:", error);
     }
