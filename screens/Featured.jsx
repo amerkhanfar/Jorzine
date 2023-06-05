@@ -175,6 +175,7 @@ const Video = styled.iframe`
   width: 55%;
   height: 40rem;
   border: none;
+  color: #be7214;
   overflow: hidden;
   border-radius: 5px;
   @media (max-width: 821px) {
@@ -186,6 +187,7 @@ const SongList = styled.div`
   height: 40rem;
   width: 40%;
   background-color: white;
+  color: #be7214;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -97,6 +97,7 @@ const Container = styled.div`
   min-height: 190vh;
   background-position: center;
   overflow: visible;
+
   @media (max-width: 821px) {
     padding-bottom: 70vh;
   }
@@ -120,6 +121,7 @@ const Card = styled.div`
   width: 25%;
   min-height: 40vh;
   max-height: 50vh;
+  text-overflow: ellipsis;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -182,6 +184,7 @@ const NewsBody = styled.div`
   max-height: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: white;
   @media (max-width: 821px) {
     width: 100%;
     align-items: center;
@@ -191,6 +194,7 @@ const NewsBody = styled.div`
 
 const NewsHeading = styled.h2`
   font-size: 1.6rem;
+  color: white;
 
   @media (max-width: 821px) {
     font-size: 2.5rem;
@@ -202,6 +206,7 @@ const NewsPar = styled.div`
   overflow: hidden;
   text-overflow: clip;
   overflow: hidden;
+  color: white;
   @media (max-width: 821px) {
     font-size: 1.8rem;
   }

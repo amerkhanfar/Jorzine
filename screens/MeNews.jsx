@@ -193,11 +193,13 @@ const NewsBody = styled.div`
 
 const NewsHeading = styled.h2`
   font-size: 2rem;
+  color: white;
 `;
 
 const NewsPar = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
+  color: white;
 
   max-height: 150px;
 
