@@ -29,6 +29,8 @@ const Index = () => {
   return (
     <Container className='bg-white'>
       <Navbar />
+      <SectionHeading>Latest ARTICLES</SectionHeading>
+
       {data.length ? (
         <ArticlesContainer>
           {data.map((item) => {
@@ -70,6 +72,7 @@ const Index = () => {
 export default Index;
 
 const Container = styled.div`
+  width: 100vw;
   display: flex;
   flex-direction: column;
   width: 100vw;
@@ -85,7 +88,19 @@ const Container = styled.div`
   );
   color: white; */
 `;
+const SectionHeading = styled.h2`
+  font-size: 4rem;
+  color: #be7214;
+  font-weight: 700;
+  text-transform: uppercase;
+`;
 
+const HeadingHr = styled.div`
+  width: 7rem;
+  height: 4px;
+  background-color: #be7214;
+  align-self: center;
+`;
 const ViewAll = styled.button`
   background-color: #be7214;
   border: none;

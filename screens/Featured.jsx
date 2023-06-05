@@ -103,7 +103,7 @@ export default Featured;
 
 const Container = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 110vh;
   background-color: white;
   display: flex;
   justify-content: center;

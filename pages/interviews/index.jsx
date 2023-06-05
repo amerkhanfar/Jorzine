@@ -30,6 +30,7 @@ const Index = () => {
   return (
     <Container className='bg-white'>
       <Navbar />
+      <SectionHeading>Latest INTERVIEWS</SectionHeading>
       {data.length ? (
         <ArticlesContainer>
           {data.map((item) => {
@@ -93,6 +94,13 @@ const TwoContainer = styled.div`
   width: 80%;
   display: flex;
   justify-content: space-between;
+`;
+
+const SectionHeading = styled.h2`
+  font-size: 4rem;
+  color: #be7214;
+  font-weight: 700;
+  text-transform: uppercase;
 `;
 
 const ArticlesContainer = styled.div`
