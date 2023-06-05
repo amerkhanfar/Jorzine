@@ -28,7 +28,7 @@ const Reviews = () => {
     }
   };
   return (
-    <Container>
+    <Container className='bg-white'>
       <Navbar />
       <div
         style={{

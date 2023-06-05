@@ -28,7 +28,7 @@ const Index = () => {
     }
   };
   return (
-    <Container>
+    <Container className='bg-white'>
       <Navbar />
       {data.length ? (
         <ArticlesContainer>

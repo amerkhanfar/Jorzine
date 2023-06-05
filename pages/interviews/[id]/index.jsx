@@ -54,7 +54,7 @@ const Index = () => {
   }, [id]);
 
   return (
-    <Container>
+    <Container className='bg-white'>
       <Navbar />
       {/* <ImageContainer style={{ backgroundImage: `url(${data.thumb})` }} /> */}
       <NewsHeading>{data.title}</NewsHeading>

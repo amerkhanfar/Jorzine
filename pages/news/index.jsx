@@ -27,7 +27,7 @@ const Index = () => {
     }
   };
   return (
-    <Container>
+    <Container className='bg-white'>
       <Navbar />
       {/* <FirstNews>
         <ImageContainer />
