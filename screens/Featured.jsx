@@ -163,7 +163,6 @@ const VideoContainer = styled.div`
   width: 100%;
   height: 100rem;
   justify-content: space-between;
-  overflow-y: hidden;
 
   @media (max-width: 821px) {
     height: 80vh;
@@ -175,14 +174,14 @@ const VideoContainer = styled.div`
 
 const Video = styled.iframe`
   width: 100%;
-  height: 40rem;
+  height: 50rem;
   border: none;
   color: #be7214;
   overflow: hidden;
 
   border-radius: 10px;
   @media (max-width: 821px) {
-    width: 100%;
+    width: 90%;
     height: 85rem;
   }
 `;
