@@ -34,10 +34,10 @@ const Interviews = () => {
         <TextContainer>
           <SectionHeading>Latest Interviews</SectionHeading>
           <HeadingHr />
-          <p style={{ fontSize: "2rem" }}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
-            aliquam excepturi debitis optio non iste repudiandae inventore,
-            deleniti, enim eveniet voluptates ipsum rerum tenetur quo?
+          <p style={{ fontSize: "2.2rem" }}>
+            Gain exclusive insights into the minds of your favorite artists as
+            we dive deep into their creative process, inspirations, and personal
+            journeys.
           </p>
           <FullButton
             onClick={() => {
@@ -54,8 +54,10 @@ const Interviews = () => {
                 style={{ backgroundImage: `url(${item.thumb})` }}>
                 <Overlay>
                   <div style={{ color: "white", fontSize: "3rem" }}>
-                    <Link href={`/interviews/${item.id}`}>
-                      <AiOutlineLink />
+                    <Link
+                      style={{ color: "white" }}
+                      href={`/interviews/${item.id}`}>
+                      <AiOutlineLink style={{ color: "white" }} />
                     </Link>
                   </div>
                 </Overlay>

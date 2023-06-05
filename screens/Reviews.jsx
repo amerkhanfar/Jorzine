@@ -46,8 +46,9 @@ const Reviews = () => {
         <SectionHeading>Latest Reviews</SectionHeading>
         <HeadingHr />
         <SectionBody>
-          There are many variations of passages of Lorem Ipsum available but the
-          majority have suffered alteration in some injected humour.
+          Discover the freshest musical offerings with our Reviews section,
+          where we delve into the newest releases, providing insightful
+          critiques and recommendations for your listening pleasure
         </SectionBody>
         <ViewAll
           onClick={() => {
