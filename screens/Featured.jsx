@@ -8,18 +8,18 @@ const Featured = () => {
     <Container>
       <SubContainer>
         <TextContainer>
-          <SectionHeading>Featured Videos</SectionHeading>
+          <SectionHeading>Featured Songs</SectionHeading>
           <HeadingHr />
         </TextContainer>
         <VideoContainer>
           <Video
-            src='https://www.youtube.com/embed/859AiCcXQeA'
+            src='https://open.spotify.com/embed/artist/1id7fKgL1T5sh5MMBeviJe?utm_source=generator&theme=0'
             title='YouTube video player'
             frameborder='0'
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
             allowfullscreen></Video>
 
-          <SongList>
+          {/* <SongList>
             <Song>
               <div>BILOCATE - The Dead Sea</div>
               <Link href='/#amer'>
@@ -92,7 +92,7 @@ const Featured = () => {
                 <AiOutlinePlaySquare fontSize={"30px"} />
               </Link>
             </Song>
-          </SongList>
+          </SongList> */}
         </VideoContainer>
       </SubContainer>
     </Container>
@@ -120,6 +120,7 @@ const SubContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 3rem;
   height: 60%;
   width: 70%;
   @media (max-width: 821px) {
@@ -160,6 +161,7 @@ const TextContainer = styled.div`
 const VideoContainer = styled.div`
   display: flex;
   width: 100%;
+  height: 100rem;
   justify-content: space-between;
   overflow-y: hidden;
 
@@ -172,14 +174,16 @@ const VideoContainer = styled.div`
 `;
 
 const Video = styled.iframe`
-  width: 55%;
+  width: 100%;
   height: 40rem;
   border: none;
   color: #be7214;
   overflow: hidden;
-  border-radius: 5px;
+
+  border-radius: 10px;
   @media (max-width: 821px) {
     width: 100%;
+    height: 85rem;
   }
 `;
 
