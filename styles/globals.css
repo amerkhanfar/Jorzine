@@ -10,6 +10,7 @@ body {
   scroll-behavior: smooth;
   font-size: 10px;
   background-color: white;
+  color: black;
 }
 
 a {
@@ -19,6 +20,7 @@ a {
 
 * {
   box-sizing: border-box;
+  color: black;
 }
 
 ::-webkit-scrollbar {
@@ -33,6 +35,10 @@ a {
 }
 .bg-white {
   background: white;
+}
+
+.text-white {
+  color: black;
 }
 
 @media (prefers-color-scheme: dark) {

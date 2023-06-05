@@ -120,6 +120,7 @@ const NewsBody = styled.h1`
   font-size: 2rem;
   font-weight: 300;
   width: 70%;
+  color: black;
   @media (max-width: 821px) {
     width: 90%;
     text-align: center;
