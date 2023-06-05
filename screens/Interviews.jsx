@@ -51,7 +51,10 @@ const Interviews = () => {
             return (
               <ImageContainer
                 key={item.id}
-                style={{ backgroundImage: `url(${item.thumb})` }}>
+                style={{
+                  backgroundImage: `url(${item.thumb})`,
+                  color: "white",
+                }}>
                 <Overlay>
                   <div style={{ color: "white", fontSize: "3rem" }}>
                     <Link
