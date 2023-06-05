@@ -119,7 +119,7 @@ const CardContainer = styled.div`
 const Card = styled.div`
   padding: 1rem;
   width: 27%;
-  min-height: 40vh;
+
   max-height: 50vh;
   text-overflow: ellipsis;
   overflow: hidden;
