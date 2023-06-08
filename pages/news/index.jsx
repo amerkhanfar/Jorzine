@@ -280,4 +280,6 @@ export const Button = styled.button`
   color: #be7214;
   text-transform: uppercase;
   cursor: pointer;
+  font-size: 1.7rem;
+  background: none;
 `;

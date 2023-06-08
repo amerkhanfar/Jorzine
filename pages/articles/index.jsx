@@ -6,6 +6,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { Audio } from "react-loader-spinner";
 import useSort from "../../screens/hooks/useSort";
+import useSide from "../../screens/hooks/useSide";
 const Index = () => {
   const router = useRouter();
   // const [data, setData] = useState([]);
@@ -116,6 +117,9 @@ const Button = styled.button`
   color: #be7214;
   text-transform: uppercase;
   cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1.7rem;
+  background: none;
 `;
 
 const HeadingHr = styled.div`

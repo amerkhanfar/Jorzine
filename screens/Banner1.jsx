@@ -164,7 +164,7 @@ const Column = styled.div`
 
 const New = styled.div`
   height: 32%;
-  min-height: 30%;
+  min-height: 32%;
   max-height: 32%;
   min-width: 100%;
   border-bottom: 1px solid white;

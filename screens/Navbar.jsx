@@ -49,17 +49,23 @@ const Container = styled.div`
 
 export const SideContent = styled.div`
   width: 100%;
-  height: 20%;
-  font-size: 18px;
+  height: 14%;
+  text-align: center;
+  display: flex;
+
+  justify-content: center;
+  font-size: 2.5rem;
   color: white;
 `;
 export const Side = styled.div`
   position: absolute;
   right: 0px;
   background-color: black;
-  width: 50%;
+  width: 40%;
   height: 100vh;
   display: flex;
+  justify-content: center;
+
   flex-direction: column;
   z-index: 1;
 `;

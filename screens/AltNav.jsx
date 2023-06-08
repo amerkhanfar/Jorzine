@@ -1,13 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useRouter } from "next/router";
+import { Side, SideContent } from "./Navbar";
 
 const Navbar = () => {
   const router = useRouter();
+  const [side, setSide] = useState(false);
   return (
     <Container>
+      {side ? (
+        <Side>
+          <div
+            style={{
+              position: "absolute",
+              top: "1rem",
+              right: "1.5rem",
+              fontSize: "2.6rem",
+              color: "white",
+            }}
+            onClick={() => {
+              setSide(false);
+            }}>
+            X
+          </div>
+          <SideContent
+            onClick={() => {
+              router.push("/");
+            }}>
+            Home
+          </SideContent>
+          <SideContent
+            onClick={() => {
+              router.push("/news");
+            }}>
+            News
+          </SideContent>
+          <SideContent
+            onClick={() => {
+              router.push("/Reviews");
+            }}>
+            Reviews
+          </SideContent>
+          <SideContent
+            onClick={() => {
+              router.push("/interviews");
+            }}>
+            Interviews
+          </SideContent>
+          <SideContent
+            onClick={() => {
+              router.push("/articles");
+            }}>
+            Articles
+          </SideContent>
+        </Side>
+      ) : null}
       <Nav>
         <Logo
           src='/assets/logo.png'
@@ -26,7 +75,12 @@ const Navbar = () => {
         </LinksContainer>
 
         <MenuIcon>
-          <AiOutlineMenu />
+          <AiOutlineMenu
+            style={{ color: "white" }}
+            onClick={() => {
+              setSide(true);
+            }}
+          />
         </MenuIcon>
       </Nav>
     </Container>

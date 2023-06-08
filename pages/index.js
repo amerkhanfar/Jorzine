@@ -18,6 +18,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 
 export default function Home() {
+  const router = useRouter();
   const [side, setSide] = useState(false);
 
   const revert = () => {
@@ -52,11 +53,49 @@ export default function Home() {
       </Head>
       {side ? (
         <Side>
-          <SideContent>Home</SideContent>
-          <SideContent>News</SideContent>
-          <SideContent>Reviews</SideContent>
-          <SideContent>Interviews</SideContent>
-          <SideContent>Articles</SideContent>
+          <div
+            style={{
+              position: "absolute",
+              top: "1rem",
+              right: "1.5rem",
+              fontSize: "2.6rem",
+              color: "white",
+            }}
+            onClick={() => {
+              setSide(false);
+            }}>
+            X
+          </div>
+          <SideContent
+            onClick={() => {
+              router.push("/");
+            }}>
+            Home
+          </SideContent>
+          <SideContent
+            onClick={() => {
+              router.push("/news");
+            }}>
+            News
+          </SideContent>
+          <SideContent
+            onClick={() => {
+              router.push("/Reviews");
+            }}>
+            Reviews
+          </SideContent>
+          <SideContent
+            onClick={() => {
+              router.push("/interviews");
+            }}>
+            Interviews
+          </SideContent>
+          <SideContent
+            onClick={() => {
+              router.push("/articles");
+            }}>
+            Articles
+          </SideContent>
         </Side>
       ) : null}
 
