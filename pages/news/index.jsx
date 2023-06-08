@@ -4,11 +4,12 @@ import styled from "styled-components";
 import axios from "axios";
 import { Audio } from "react-loader-spinner";
 import { useRouter } from "next/router";
+import useSort from "../../screens/hooks/useSort";
 
 const Index = () => {
   const router = useRouter();
 
-  const [data, setData] = useState([]);
+  const { toggle, data, reverseArray, setData } = useSort([]);
 
   useEffect(() => {
     fetchData();
@@ -65,6 +66,19 @@ const Index = () => {
         </NewsBody>
       </FirstNews> */}
       <h1 style={{ fontSize: "3.5rem" }}>Latest News</h1>
+      <div
+        style={{
+          width: "90%",
+          alignSelf: "center",
+          display: "flex",
+          justifyContent: "center",
+        }}>
+        <Button
+          style={{ alignSelf: "flex-end" }}
+          onClick={() => reverseArray()}>
+          {toggle ? "Newest First" : "Oldest First"}
+        </Button>
+      </div>
       {data.length ? (
         <CardsContainer>
           {data.map((item) => {
@@ -258,5 +272,12 @@ const CardImage = styled.div`
 export const ReadMore = styled.a`
   color: #d5ad18;
   font-size: 15px;
+  cursor: pointer;
+`;
+
+export const Button = styled.button`
+  border: none;
+  color: #be7214;
+  text-transform: uppercase;
   cursor: pointer;
 `;

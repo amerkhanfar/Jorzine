@@ -8,12 +8,21 @@ import Reviews from "../screens/Reviews";
 import MeNews from "../screens/MeNews";
 import Test from "../screens/Test";
 import Cardnews from "../screens/Cardnews";
+import Banners from "../screens/Banner1";
 import Interviews from "../screens/Interviews";
 import Featured from "../screens/Featured";
 import Footer from "../screens/Footer";
+import { SideContent } from "../screens/Navbar";
+import { Side } from "../screens/Navbar";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 export default function Home() {
+  const [side, setSide] = useState(false);
+
+  const revert = () => {
+    setSide(!side);
+  };
   return (
     <div style={{ background: "white" }}>
       <Head>
@@ -41,9 +50,18 @@ export default function Home() {
         <meta name='msapplication-TileColor' content='#da532c' />
         <meta name='theme-color' content='#ffffff'></meta>
       </Head>
+      {side ? (
+        <Side>
+          <SideContent>Home</SideContent>
+          <SideContent>News</SideContent>
+          <SideContent>Reviews</SideContent>
+          <SideContent>Interviews</SideContent>
+          <SideContent>Articles</SideContent>
+        </Side>
+      ) : null}
 
-      <Banner />
-      <Navbar />
+      <Banners />
+      <Navbar revert={revert} />
       <Cardnews />
       {/* <News /> */}
       <Reviews />

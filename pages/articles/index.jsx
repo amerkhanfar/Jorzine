@@ -5,10 +5,12 @@ import styled from "styled-components";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { Audio } from "react-loader-spinner";
+import useSort from "../../screens/hooks/useSort";
 const Index = () => {
   const router = useRouter();
-
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
+  // const [toggle, setToggle] = useState(true);
+  const { toggle, data, reverseArray, setData } = useSort([]);
 
   useEffect(() => {
     fetchData();
@@ -30,6 +32,20 @@ const Index = () => {
     <Container className='bg-white'>
       <Navbar />
       <SectionHeading>Latest ARTICLES</SectionHeading>
+
+      <div
+        style={{
+          width: "90%",
+          alignSelf: "center",
+          display: "flex",
+          justifyContent: "center",
+        }}>
+        <Button
+          style={{ alignSelf: "flex-end" }}
+          onClick={() => reverseArray()}>
+          {toggle ? "Newest First" : "Oldest First"}
+        </Button>
+      </div>
 
       {data.length ? (
         <ArticlesContainer>
@@ -93,6 +109,13 @@ const SectionHeading = styled.h2`
   color: #be7214;
   font-weight: 700;
   text-transform: uppercase;
+`;
+
+const Button = styled.button`
+  border: none;
+  color: #be7214;
+  text-transform: uppercase;
+  cursor: pointer;
 `;
 
 const HeadingHr = styled.div`

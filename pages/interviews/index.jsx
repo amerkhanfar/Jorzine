@@ -5,11 +5,10 @@ import styled from "styled-components";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { Audio } from "react-loader-spinner";
-
+import useSort from "../../screens/hooks/useSort";
 const Index = () => {
   const router = useRouter();
-
-  const [data, setData] = useState([]);
+  const { toggle, data, reverseArray, setData } = useSort([]);
 
   useEffect(() => {
     fetchData();
@@ -31,6 +30,19 @@ const Index = () => {
     <Container className='bg-white'>
       <Navbar />
       <SectionHeading>Latest INTERVIEWS</SectionHeading>
+      <div
+        style={{
+          width: "90%",
+          alignSelf: "center",
+          display: "flex",
+          justifyContent: "center",
+        }}>
+        <Button
+          style={{ alignSelf: "flex-end" }}
+          onClick={() => reverseArray()}>
+          {toggle ? "Newest First" : "Oldest First"}
+        </Button>
+      </div>
       {data.length ? (
         <ArticlesContainer>
           {data.map((item) => {
@@ -134,4 +146,10 @@ const ImageContainer = styled.div`
   background-size: cover;
   background-position: center;
   transition: all 0.6s ease-in-out;
+`;
+export const Button = styled.button`
+  border: none;
+  color: #be7214;
+  text-transform: uppercase;
+  cursor: pointer;
 `;

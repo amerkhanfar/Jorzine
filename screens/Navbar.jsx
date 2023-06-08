@@ -4,7 +4,7 @@ import Link from "next/link";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useRouter } from "next/router";
 
-const Navbar = () => {
+const Navbar = ({ revert }) => {
   const router = useRouter();
   return (
     <Container>
@@ -25,7 +25,7 @@ const Navbar = () => {
           <Link href={"/articles"}>Articles</Link>
         </LinksContainer>
 
-        <MenuIcon>
+        <MenuIcon onClick={revert}>
           <AiOutlineMenu />
         </MenuIcon>
       </Nav>
@@ -47,6 +47,22 @@ const Container = styled.div`
   }
 `;
 
+export const SideContent = styled.div`
+  width: 100%;
+  height: 20%;
+  font-size: 18px;
+  color: white;
+`;
+export const Side = styled.div`
+  position: absolute;
+  right: 0px;
+  background-color: black;
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+`;
 const Logo = styled.img`
   @media screen and (max-width: 821px) {
     width: 40%;

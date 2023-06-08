@@ -6,10 +6,11 @@ import { useRouter } from "next/router";
 import Navbar from "../../screens/AltNav";
 import Footer from "../../screens/Footer";
 import { Audio } from "react-loader-spinner";
+import useSort from "../../screens/hooks/useSort";
 
 const Reviews = () => {
-  const [data, setData] = useState([]);
   const router = useRouter();
+  const { toggle, data, reverseArray, setData } = useSort([]);
 
   useEffect(() => {
     fetchData();
@@ -38,7 +39,20 @@ const Reviews = () => {
           alignItems: "center",
         }}>
         <SectionHeading>Latest Reviews</SectionHeading>
-        <HeadingHr />
+
+        <div
+          style={{
+            width: "90%",
+            alignSelf: "center",
+            display: "flex",
+            justifyContent: "center",
+          }}>
+          <Button
+            style={{ alignSelf: "flex-end" }}
+            onClick={() => reverseArray()}>
+            {toggle ? "Newest First" : "Oldest First"}
+          </Button>
+        </div>
       </div>
 
       {data.length ? (
@@ -275,4 +289,11 @@ const ImageContainer = styled.div`
       z-index: 5;
     }
   }
+`;
+
+export const Button = styled.button`
+  border: none;
+  color: #be7214;
+  text-transform: uppercase;
+  cursor: pointer;
 `;
