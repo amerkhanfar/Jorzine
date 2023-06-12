@@ -9,11 +9,26 @@ const Banners = () => {
   const router = useRouter();
   const [news, setNews] = useState([]);
   const [reviews, setReviews] = useState([]);
+  const [interviews, setInterviews] = useState([]);
 
   useEffect(() => {
     fetchData();
     fetchReviews();
+    fetchInterviews();
   }, []);
+
+  const fetchInterviews = async () => {
+    try {
+      const response = await axios.get(
+        "https://jorzine-backend.oplus.dev/api/interviews",
+      ); // Replace with your API endpoint
+      const jsonData = response.data.interviews;
+      console.log(jsonData);
+      setInterviews(jsonData.slice(0, 4)); // Get the first three items from the response
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   const fetchData = async () => {
     try {
@@ -35,7 +50,7 @@ const Banners = () => {
       ); // Replace with your API endpoint
       const jsonData = response.data.reviews;
       console.log(jsonData);
-      setReviews(jsonData.slice(0, 3)); // Get the first three items from the response
+      setReviews(jsonData.slice(0, 4)); // Get the first three items from the response
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -49,32 +64,102 @@ const Banners = () => {
         <Rows>
           <Column style={{ justifyContent: "center", textAlign: "center" }}>
             <Fade left>
-              <h1 style={{ color: "white", fontSize: "27PX" }}>
-                MID-EASTERN METAL WEBZINE
-              </h1>
+              <div
+                style={{
+                  alignSelf: "flex-start",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                }}>
+                <h1
+                  style={{
+                    color: "white",
+                    fontSize: "23PX",
+                    whiteSpace: "nowrap",
+                  }}>
+                  MID-EASTERN METAL WEBZINE
+                </h1>
 
-              <h1 style={{ color: "white", fontSize: "27PX" }}>
-                SERVING ROCK & METAL SINCE 2006
-              </h1>
+                <h1
+                  style={{
+                    color: "white",
+                    fontSize: "23PX",
+                    whiteSpace: "nowrap",
+                  }}>
+                  SERVING ROCK & METAL SINCE 2006
+                </h1>
+
+                <div
+                  style={{
+                    height: "70%",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "1.5rem",
+                  }}>
+                  <h1 style={{ color: "white" }}>Latest News</h1>
+                  {news.map((item) => {
+                    return (
+                      <div
+                        key={item.id}
+                        style={{
+                          height: "100%",
+                        }}>
+                        <h2 style={{ color: "white" }}>{item.title}</h2>
+                        <h3
+                          onClick={() => {
+                            router.push(`/Reviews/${item.id}`);
+                          }}
+                          style={{
+                            color: "white",
+                            cursor: "pointer",
+                          }}>
+                          {" "}
+                          Read More →
+                        </h3>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
             </Fade>
           </Column>
           <Column>
-            <h1 style={{ color: "white" }}>Latest News</h1>
-            {news.map((item) => {
+            <h1 style={{ color: "white" }}>Latest Interviews</h1>
+            {interviews.map((item) => {
               return (
                 <New key={item.id}>
-                  <h1 style={{ color: "white" }}>{item.title}</h1>
-                  <h3
+                  <div
                     style={{
-                      color: "white",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => {
-                      router.push(`/news/${item.id}`);
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
                     }}>
-                    {" "}
-                    Read More →
-                  </h3>
+                    <div
+                      style={{
+                        backgroundImage: `url(${item.thumb})`,
+                        width: "100px",
+                        height: "100px",
+                      }}></div>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        width: "60%",
+                      }}>
+                      <h2 style={{ color: "white" }}>{item.title}</h2>
+                      <h3
+                        style={{
+                          color: "white",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => {
+                          router.push(`/interviews/${item.id}`);
+                        }}>
+                        {" "}
+                        Read More →
+                      </h3>
+                    </div>
+                  </div>
                 </New>
               );
             })}
@@ -84,18 +169,38 @@ const Banners = () => {
             {reviews.map((item) => {
               return (
                 <New key={item.id}>
-                  <h1 style={{ color: "white" }}>{item.title}</h1>
-                  <h3
-                    onClick={() => {
-                      router.push(`/Reviews/${item.id}`);
-                    }}
+                  <div
                     style={{
-                      color: "white",
-                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
                     }}>
-                    {" "}
-                    Read More →
-                  </h3>
+                    <div
+                      style={{
+                        backgroundImage: `url(${item.thumb})`,
+                        width: "100px",
+                        height: "100px",
+                      }}></div>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        width: "60%",
+                      }}>
+                      <h2 style={{ color: "white" }}>{item.title}</h2>
+                      <h3
+                        style={{
+                          color: "white",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => {
+                          router.push(`/interviews/${item.id}`);
+                        }}>
+                        {" "}
+                        Read More →
+                      </h3>
+                    </div>
+                  </div>
                 </New>
               );
             })}
@@ -163,9 +268,9 @@ const Column = styled.div`
 `;
 
 const New = styled.div`
-  height: 32%;
-  min-height: 32%;
-  max-height: 32%;
+  height: 27%;
+  min-height: 27%;
+  max-height: 27%;
   min-width: 100%;
   border-bottom: 1px solid white;
   display: flex;
