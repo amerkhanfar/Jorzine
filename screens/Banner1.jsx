@@ -436,11 +436,14 @@ const Playlist = styled.iframe`
   height: 100vh;
   border: none;
   color: #be7214;
+  background-color: #282828;
   margin-top: 1rem;
   border-radius: 10px;
+
   @media (max-width: 821px) {
     width: 100%;
     height: 15vh;
+    overflow: hidden;
   }
 `;
 const BottomBrush = styled.div`
