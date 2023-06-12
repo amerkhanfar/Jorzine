@@ -436,7 +436,7 @@ const Playlist = styled.iframe`
   height: 100vh;
   border: none;
   color: #be7214;
-  background-color: #282828;
+  background-color: transparent !important;
   margin-top: 1rem;
   border-radius: 10px;
 
@@ -444,6 +444,7 @@ const Playlist = styled.iframe`
     width: 100%;
     height: 15vh;
     overflow: hidden;
+    background-color: transparent !important;
   }
 `;
 const BottomBrush = styled.div`
