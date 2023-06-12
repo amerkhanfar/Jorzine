@@ -64,11 +64,11 @@ const Banners = () => {
         <Rows>
           <Column
             style={{
-              justifyContent: "center",
-              textAlign: "center",
-              width: "16vw",
+              width: "20vw",
+              height: "60vh",
+              maxHeight: "100vh",
             }}>
-            <Fade left>
+            {/* <Fade left>
               <div
                 style={{
                   alignSelf: "flex-start",
@@ -134,7 +134,13 @@ const Banners = () => {
                   </div>
                 )}
               </div>
-            </Fade>
+            </Fade> */}
+
+            <Playlist
+              src='https://open.spotify.com/embed/playlist/6GIfItyTdvjxKVVxkqfVpc?utm_source=generator&theme=0'
+              allowfullscreen=''
+              allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
+              loading='lazy'></Playlist>
           </Column>
 
           {interviews.length ? (
@@ -352,6 +358,18 @@ const Container = styled.div`
   overflow: hidden;
 `;
 
+const Playlist = styled.iframe`
+  width: 100%;
+  height: 100vh;
+  border: none;
+  color: #be7214;
+  margin-top: 1rem;
+  border-radius: 10px;
+  @media (max-width: 821px) {
+    width: 90%;
+    height: 85rem;
+  }
+`;
 const BottomBrush = styled.div`
   position: absolute;
   bottom: 0;

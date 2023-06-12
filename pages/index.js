@@ -104,9 +104,10 @@ export default function Home() {
       <Cardnews />
       {/* <News /> */}
       <Reviews />
-      <Interviews />
       <MeNews />
-      <Featured />
+      <Interviews />
+
+      {/* <Featured /> */}
       <Footer />
       {/* <Test /> */}
     </div>

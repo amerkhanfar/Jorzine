@@ -78,6 +78,7 @@ export default Interviews;
 const Container = styled.div`
   width: 100vw;
   margin-bottom: 25rem;
+  margin-top: 25rem;
   display: flex;
   justify-content: center;
   overflow: visible;

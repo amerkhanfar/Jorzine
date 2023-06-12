@@ -9,13 +9,38 @@ const Navbar = ({ revert }) => {
   return (
     <Container>
       <Nav>
-        <Logo
-          src='/assets/logo.png'
-          alt='Jorzine Logo'
-          onClick={() => {
-            router.push("/");
-          }}
-        />
+        <div style={{ display: "flex" }}>
+          <Logo
+            src='/assets/logo.png'
+            alt='Jorzine Logo'
+            onClick={() => {
+              router.push("/");
+            }}
+          />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignSelf: "center",
+              marginLeft: "1rem",
+              color: "white",
+              width: "50%",
+            }}>
+            <span
+              style={{
+                color: "white",
+              }}>
+              MID-EASTERN METAL WEBZINE
+            </span>
+            <span
+              style={{
+                color: "white",
+              }}>
+              SERVING ROCK & METAL SINCE 2006
+            </span>
+          </div>
+        </div>
+
         <LinksContainer>
           <Link href={"/"}>Home</Link>
           <Link href={"/news"}>News</Link>
