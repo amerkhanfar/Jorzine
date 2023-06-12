@@ -317,7 +317,7 @@ const Banners = () => {
                       style={{
                         color: "white",
                         fontWeight: "bold",
-                        fontSize: "1.3rem",
+                        fontSize: "1.8rem",
                       }}>
                       {item.title}
                     </p>
