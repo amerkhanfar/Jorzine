@@ -81,138 +81,193 @@ const Banners = () => {
 
                 <Headline>SERVING ROCK & METAL SINCE 2006</Headline>
 
-                <div
-                  style={{
-                    height: "70%",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "1.5rem",
-                  }}>
-                  <h1 style={{ color: "white" }}>Latest News</h1>
-                  {news.map((item) => {
-                    return (
-                      <div
-                        key={item.id}
-                        style={{
-                          height: "100%",
-                        }}>
-                        <h2 style={{ color: "white" }}>{item.title}</h2>
-                        <h3
-                          onClick={() => {
-                            router.push(`/news/${item.id}`);
-                          }}
+                {news.length ? (
+                  <div
+                    style={{
+                      height: "70%",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "1.5rem",
+                    }}>
+                    <h1 style={{ color: "white" }}>Latest News</h1>
+                    {news.map((item) => {
+                      return (
+                        <div
+                          key={item.id}
                           style={{
-                            color: "white",
-                            cursor: "pointer",
+                            height: "100%",
                           }}>
-                          {" "}
-                          Read More →
-                        </h3>
-                      </div>
-                    );
-                  })}
-                </div>
+                          <h2 style={{ color: "white" }}>{item.title}</h2>
+                          <h3
+                            onClick={() => {
+                              router.push(`/news/${item.id}`);
+                            }}
+                            style={{
+                              color: "white",
+                              cursor: "pointer",
+                            }}>
+                            {" "}
+                            Read More →
+                          </h3>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div
+                    style={{
+                      height: "70%",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "1.5rem",
+                    }}>
+                    <h1 style={{ color: "white" }}>Latest News</h1>{" "}
+                    <Audio
+                      height='100'
+                      width='100'
+                      color='#be7214'
+                      ariaLabel='audio-loading'
+                      wrapperStyle={{}}
+                      wrapperClass='wrapper-class'
+                      visible={true}
+                    />
+                  </div>
+                )}
               </div>
             </Fade>
           </Column>
-          <Column>
-            <h1 style={{ color: "white" }}>Latest Interviews</h1>
-            {interviews.map((item) => {
-              return (
-                <New key={item.id}>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                    }}>
-                    <Thumb
-                      style={{
-                        backgroundImage: `url(${item.thumb})`,
 
-                        backgroundSize: "cover",
-                      }}></Thumb>
+          {interviews.length ? (
+            <Column>
+              <h1 style={{ color: "white" }}>Latest Interviews</h1>
+              {interviews.map((item) => {
+                return (
+                  <New key={item.id}>
                     <div
                       style={{
                         display: "flex",
-                        flexDirection: "column",
-                        width: "60%",
+                        alignItems: "center",
+                        justifyContent: "space-between",
                       }}>
-                      <p
+                      <Thumb
                         style={{
-                          color: "white",
-                          fontWeight: "bold",
-                          fontSize: "1.3rem",
-                        }}>
-                        {item.title}
-                      </p>
-                      <p
-                        style={{
-                          color: "white",
-                          cursor: "pointer",
-                          fontWeight: "bold",
-                        }}
-                        onClick={() => {
-                          router.push(`/interviews/${item.id}`);
-                        }}>
-                        {" "}
-                        Read More →
-                      </p>
-                    </div>
-                  </div>
-                </New>
-              );
-            })}
-          </Column>
-          <Column>
-            <h1 style={{ color: "white" }}>Latest Reviews</h1>
-            {reviews.map((item) => {
-              return (
-                <New key={item.id}>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                    }}>
-                    <Thumb
-                      style={{
-                        backgroundImage: `url(${item.thumb})`,
+                          backgroundImage: `url(${item.thumb})`,
 
-                        backgroundSize: "cover",
-                      }}></Thumb>
+                          backgroundSize: "cover",
+                        }}></Thumb>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          width: "60%",
+                        }}>
+                        <p
+                          style={{
+                            color: "white",
+                            fontWeight: "bold",
+                            fontSize: "1.3rem",
+                          }}>
+                          {item.title}
+                        </p>
+                        <p
+                          style={{
+                            color: "white",
+                            cursor: "pointer",
+                            fontWeight: "bold",
+                          }}
+                          onClick={() => {
+                            router.push(`/interviews/${item.id}`);
+                          }}>
+                          {" "}
+                          Read More →
+                        </p>
+                      </div>
+                    </div>
+                  </New>
+                );
+              })}
+            </Column>
+          ) : (
+            <Column>
+              {" "}
+              <h1 style={{ color: "white" }}>Latest Interviews</h1>{" "}
+              <Audio
+                height='100'
+                width='100'
+                color='#be7214'
+                ariaLabel='audio-loading'
+                wrapperStyle={{}}
+                wrapperClass='wrapper-class'
+                visible={true}
+              />
+            </Column>
+          )}
+
+          {reviews.length ? (
+            <Column>
+              <h1 style={{ color: "white" }}>Latest Reviews</h1>
+              {reviews.map((item) => {
+                return (
+                  <New key={item.id}>
                     <div
                       style={{
                         display: "flex",
-                        flexDirection: "column",
-                        width: "60%",
+                        alignItems: "center",
+                        justifyContent: "space-between",
                       }}>
-                      <p
+                      <Thumb
                         style={{
-                          color: "white",
-                          fontWeight: "bold",
-                          fontSize: "1.3rem",
-                        }}>
-                        {item.title}
-                      </p>
-                      <p
+                          backgroundImage: `url(${item.thumb})`,
+
+                          backgroundSize: "cover",
+                        }}></Thumb>
+                      <div
                         style={{
-                          color: "white",
-                          cursor: "pointer",
-                          fontWeight: "bold",
-                        }}
-                        onClick={() => {
-                          router.push(`/Reviews/${item.id}`);
+                          display: "flex",
+                          flexDirection: "column",
+                          width: "60%",
                         }}>
-                        {" "}
-                        Read More →
-                      </p>
+                        <p
+                          style={{
+                            color: "white",
+                            fontWeight: "bold",
+                            fontSize: "1.3rem",
+                          }}>
+                          {item.title}
+                        </p>
+                        <p
+                          style={{
+                            color: "white",
+                            cursor: "pointer",
+                            fontWeight: "bold",
+                          }}
+                          onClick={() => {
+                            router.push(`/Reviews/${item.id}`);
+                          }}>
+                          {" "}
+                          Read More →
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </New>
-              );
-            })}
-          </Column>
+                  </New>
+                );
+              })}
+            </Column>
+          ) : (
+            <Column>
+              {" "}
+              <h1 style={{ color: "white" }}>Latest Reviews</h1>{" "}
+              <Audio
+                height='100'
+                width='100'
+                color='#be7214'
+                ariaLabel='audio-loading'
+                wrapperStyle={{}}
+                wrapperClass='wrapper-class'
+                visible={true}
+              />
+            </Column>
+          )}
         </Rows>
         <BannerText>
           <p style={{ color: "white" }}>JORZINE</p>
