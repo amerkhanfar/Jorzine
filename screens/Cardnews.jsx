@@ -19,7 +19,7 @@ const Cardnews = () => {
         "https://jorzine-backend.oplus.dev/api/news_international",
       ); // Replace with your API endpoint
       const jsonData = response.data.news;
-      console.log(jsonData);
+      console.log(jsonData.reverse());
       setData(jsonData.slice(0, 6)); // Get the first three items from the response
     } catch (error) {
       console.error("Error fetching data:", error);

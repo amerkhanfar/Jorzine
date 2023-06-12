@@ -27,7 +27,7 @@ const Reviews = () => {
   };
   return (
     <Container>
-      <div
+      {/* <div
         style={{
           position: "absolute",
           bottom: "0",
@@ -35,7 +35,7 @@ const Reviews = () => {
           width: "200px",
         }}>
         <img src='/assets/play_bg.png' width={400} />
-      </div>
+      </div> */}
       <div
         style={{
           display: "flex",

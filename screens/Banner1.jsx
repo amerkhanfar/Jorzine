@@ -23,7 +23,7 @@ const Banners = () => {
         "https://jorzine-backend.oplus.dev/api/interviews",
       ); // Replace with your API endpoint
       const jsonData = response.data.interviews;
-      console.log(jsonData);
+      console.log(jsonData.reverse());
       setInterviews(jsonData.slice(0, 4)); // Get the first three items from the response
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -275,7 +275,7 @@ const Banners = () => {
             </Column>
           )}
         </Rows>
-        <BannerText>
+        {/* <BannerText>
           <p style={{ color: "white" }}>JORZINE</p>
         </BannerText>
         <BannerText2>
@@ -283,7 +283,63 @@ const Banners = () => {
         </BannerText2>
         <BannerText3>
           <p style={{ color: "white" }}>SERVING ROCK & METAL SINCE 2006</p>
-        </BannerText3>
+        </BannerText3> */}
+
+        <Mcolumn>
+          <h1 style={{ color: "white" }}>Latest Reviews</h1>
+          {reviews.map((item) => {
+            return (
+              <div key={item.id}>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}>
+                  <Thumb
+                    style={{
+                      backgroundImage: `url(${item.thumb})`,
+
+                      backgroundSize: "cover",
+                    }}></Thumb>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      width: "60%",
+                    }}>
+                    <p
+                      style={{
+                        color: "white",
+                        fontWeight: "bold",
+                        fontSize: "1.3rem",
+                      }}>
+                      {item.title}
+                    </p>
+                    <p
+                      style={{
+                        color: "white",
+                        cursor: "pointer",
+                        fontWeight: "bold",
+                      }}
+                      onClick={() => {
+                        router.push(`/Reviews/${item.id}`);
+                      }}>
+                      {" "}
+                      Read More →
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+
+          <Playlist
+            src='https://open.spotify.com/embed/playlist/6GIfItyTdvjxKVVxkqfVpc?utm_source=generator&theme=0'
+            allowfullscreen=''
+            allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
+            loading='lazy'></Playlist>
+        </Mcolumn>
       </Container>
     </Fade>
   );
@@ -303,6 +359,10 @@ const Rows = styled.div`
     width: 90%;
     display: none;
   }
+`;
+const Mnews = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 const Overlay = styled.div`
@@ -341,7 +401,6 @@ const New = styled.div`
   min-height: 27%;
   max-height: 27%;
   min-width: 100%;
-  border-bottom: 1px solid white;
   display: flex;
   padding-bottom: 1rem;
   flex-direction: column;
@@ -358,6 +417,20 @@ const Container = styled.div`
   overflow: hidden;
 `;
 
+const Mcolumn = styled.div`
+  width: 80%;
+  height: 100vh;
+  display: flex;
+  z-index: 20000;
+  align-self: center;
+  justify-content: center;
+  flex-direction: column;
+  display: none;
+  @media (max-width: 821px) {
+    display: flex;
+  }
+`;
+
 const Playlist = styled.iframe`
   width: 100%;
   height: 100vh;
@@ -366,8 +439,8 @@ const Playlist = styled.iframe`
   margin-top: 1rem;
   border-radius: 10px;
   @media (max-width: 821px) {
-    width: 90%;
-    height: 85rem;
+    width: 100%;
+    height: 15vh;
   }
 `;
 const BottomBrush = styled.div`

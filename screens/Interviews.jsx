@@ -84,6 +84,8 @@ const Container = styled.div`
   overflow: visible;
   position: relative;
   background-color: white;
+  /* background-image: url("/assets/bg.jpg");
+  background-size: cover; */
 
   @media (max-width: 821px) {
     height: 90vh;
