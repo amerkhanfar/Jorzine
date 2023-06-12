@@ -50,7 +50,7 @@ const Reviews = () => {
           <Button
             style={{ alignSelf: "flex-end" }}
             onClick={() => reverseArray()}>
-            {toggle ? "Newest First" : "Oldest First"}
+            {toggle ? "Order By: Newest First" : "Order By: Oldest First"}
           </Button>
         </div>
       </div>

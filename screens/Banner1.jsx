@@ -77,23 +77,9 @@ const Banners = () => {
                   flexDirection: "column",
                   textAlign: "left",
                 }}>
-                <h1
-                  style={{
-                    color: "white",
-                    fontSize: "20PX",
-                    whiteSpace: "nowrap",
-                  }}>
-                  MID-EASTERN METAL WEBZINE
-                </h1>
+                <Headline>MID-EASTERN METAL WEBZINE</Headline>
 
-                <h1
-                  style={{
-                    color: "white",
-                    fontSize: "20PX",
-                    whiteSpace: "nowrap",
-                  }}>
-                  SERVING ROCK & METAL SINCE 2006
-                </h1>
+                <Headline>SERVING ROCK & METAL SINCE 2006</Headline>
 
                 <div
                   style={{
@@ -113,7 +99,7 @@ const Banners = () => {
                         <h2 style={{ color: "white" }}>{item.title}</h2>
                         <h3
                           onClick={() => {
-                            router.push(`/Reviews/${item.id}`);
+                            router.push(`/news/${item.id}`);
                           }}
                           style={{
                             color: "white",
@@ -140,30 +126,38 @@ const Banners = () => {
                       alignItems: "center",
                       justifyContent: "space-between",
                     }}>
-                    <div
+                    <Thumb
                       style={{
                         backgroundImage: `url(${item.thumb})`,
-                        width: "100px",
-                        height: "100px",
-                      }}></div>
+
+                        backgroundSize: "cover",
+                      }}></Thumb>
                     <div
                       style={{
                         display: "flex",
                         flexDirection: "column",
                         width: "60%",
                       }}>
-                      <h2 style={{ color: "white" }}>{item.title}</h2>
-                      <h3
+                      <p
+                        style={{
+                          color: "white",
+                          fontWeight: "bold",
+                          fontSize: "1.3rem",
+                        }}>
+                        {item.title}
+                      </p>
+                      <p
                         style={{
                           color: "white",
                           cursor: "pointer",
+                          fontWeight: "bold",
                         }}
                         onClick={() => {
                           router.push(`/interviews/${item.id}`);
                         }}>
                         {" "}
                         Read More →
-                      </h3>
+                      </p>
                     </div>
                   </div>
                 </New>
@@ -181,30 +175,38 @@ const Banners = () => {
                       alignItems: "center",
                       justifyContent: "space-between",
                     }}>
-                    <div
+                    <Thumb
                       style={{
                         backgroundImage: `url(${item.thumb})`,
-                        width: "100px",
-                        height: "100px",
-                      }}></div>
+
+                        backgroundSize: "cover",
+                      }}></Thumb>
                     <div
                       style={{
                         display: "flex",
                         flexDirection: "column",
                         width: "60%",
                       }}>
-                      <h2 style={{ color: "white" }}>{item.title}</h2>
-                      <h3
+                      <p
+                        style={{
+                          color: "white",
+                          fontWeight: "bold",
+                          fontSize: "1.3rem",
+                        }}>
+                        {item.title}
+                      </p>
+                      <p
                         style={{
                           color: "white",
                           cursor: "pointer",
+                          fontWeight: "bold",
                         }}
                         onClick={() => {
-                          router.push(`/interviews/${item.id}`);
+                          router.push(`/Reviews/${item.id}`);
                         }}>
                         {" "}
                         Read More →
-                      </h3>
+                      </p>
                     </div>
                   </div>
                 </New>
@@ -303,6 +305,25 @@ const BottomBrush = styled.div`
   height: 40vh;
   background-size: cover;
   background-repeat: no-repeat;
+`;
+
+const Headline = styled.h1`
+  color: white;
+  font-size: 20px;
+  white-space: nowrap;
+  @media (max-width: 1024px) {
+    font-size: 18px;
+    white-space: pre-line;
+  }
+`;
+
+const Thumb = styled.div`
+  width: 10rem;
+  height: 10rem;
+  @media (max-width: 1000px) {
+    width: 8.5rem;
+    height: 8.5rem;
+  }
 `;
 
 const Animation1 = keyframes`
