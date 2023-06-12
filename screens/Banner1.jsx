@@ -62,7 +62,12 @@ const Banners = () => {
         <BottomBrush />
 
         <Rows>
-          <Column style={{ justifyContent: "center", textAlign: "center" }}>
+          <Column
+            style={{
+              justifyContent: "center",
+              textAlign: "center",
+              width: "18vw",
+            }}>
             <Fade left>
               <div
                 style={{
@@ -74,7 +79,7 @@ const Banners = () => {
                 <h1
                   style={{
                     color: "white",
-                    fontSize: "23PX",
+                    fontSize: "21PX",
                     whiteSpace: "nowrap",
                   }}>
                   MID-EASTERN METAL WEBZINE
@@ -83,7 +88,7 @@ const Banners = () => {
                 <h1
                   style={{
                     color: "white",
-                    fontSize: "23PX",
+                    fontSize: "21PX",
                     whiteSpace: "nowrap",
                   }}>
                   SERVING ROCK & METAL SINCE 2006
