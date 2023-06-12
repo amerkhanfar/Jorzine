@@ -26,18 +26,8 @@ const Navbar = ({ revert }) => {
               color: "white",
               width: "50%",
             }}>
-            <span
-              style={{
-                color: "white",
-              }}>
-              MID-EASTERN METAL WEBZINE
-            </span>
-            <span
-              style={{
-                color: "white",
-              }}>
-              SERVING ROCK & METAL SINCE 2006
-            </span>
+            <Title>MID-EASTERN METAL WEBZINE</Title>
+            <Title>SERVING ROCK & METAL SINCE 2006</Title>
           </div>
         </div>
 
@@ -119,6 +109,14 @@ const MenuIcon = styled.div`
   font-size: 3rem;
   @media screen and (max-width: 821px) {
     display: block;
+  }
+`;
+
+const Title = styled.span`
+  color: white;
+
+  @media screen and (max-width: 500px) {
+    font-size: 8px;
   }
 `;
 

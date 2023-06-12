@@ -286,6 +286,11 @@ const Banners = () => {
         </BannerText3> */}
 
         <Mcolumn>
+          <Playlist
+            src='https://open.spotify.com/embed/playlist/6GIfItyTdvjxKVVxkqfVpc?utm_source=generator&theme=0'
+            allowfullscreen=''
+            allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
+            loading='lazy'></Playlist>
           <h1 style={{ color: "white" }}>Latest Reviews</h1>
           {reviews.map((item) => {
             return (
@@ -333,12 +338,6 @@ const Banners = () => {
               </div>
             );
           })}
-
-          <Playlist
-            src='https://open.spotify.com/embed/playlist/6GIfItyTdvjxKVVxkqfVpc?utm_source=generator&theme=0'
-            allowfullscreen=''
-            allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
-            loading='lazy'></Playlist>
         </Mcolumn>
       </Container>
     </Fade>
@@ -422,6 +421,7 @@ const Mcolumn = styled.div`
   height: 100vh;
   display: flex;
   z-index: 20000;
+
   align-self: center;
   justify-content: center;
   flex-direction: column;
@@ -466,9 +466,16 @@ const Headline = styled.h1`
 const Thumb = styled.div`
   width: 10rem;
   height: 10rem;
+  border-radius: 5px;
   @media (max-width: 1000px) {
     width: 8.5rem;
     height: 8.5rem;
+  }
+
+  @media (max-width: 821px) {
+    width: 12.5rem;
+    height: 9.5rem;
+    margin-bottom: 1rem;
   }
 `;
 
