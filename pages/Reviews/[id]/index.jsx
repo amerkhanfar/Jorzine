@@ -64,7 +64,7 @@ const Index = () => {
             <NewsHeading>Review:&nbsp; {data.title}</NewsHeading>
             <h2>Reviewer:&nbsp; {data.reviewer}</h2>
             <h2>Band/Artist:&nbsp; {data.band}</h2>
-            <h2>Interview Date:&nbsp; {data.review_date}</h2>
+            <h2>Review Date:&nbsp; {data.review_date}</h2>
           </Infos>
         </ReviewContainer>
       </Cint>
